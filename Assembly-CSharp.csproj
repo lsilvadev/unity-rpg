@@ -53,6 +53,7 @@
   <ItemGroup>
      <Compile Include="Assets\Game\Script\Player\PlayerMoviment.cs" />
      <Compile Include="Assets\Game\Script\Util\FollowObject.cs" />
+     <Compile Include="Assets\Game\Script\Util\TransportBehaviour.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>E:/Meus Documentos/Dev/unity/project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
