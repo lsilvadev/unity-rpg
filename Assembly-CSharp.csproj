@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Game\Script\EnemyController.cs" />
      <Compile Include="Assets\Game\Script\Player\PlayerMoviment.cs" />
      <Compile Include="Assets\Game\Script\Util\FollowObject.cs" />
      <Compile Include="Assets\Game\Script\Util\TransportBehaviour.cs" />
