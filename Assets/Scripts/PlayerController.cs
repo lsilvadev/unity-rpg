@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     private bool playerMoving;
     public Vector2 lastMove;
     private Animator animator;
-    private Rigidbody2D rigidbody;
+    private new Rigidbody2D rigidbody;
     private static bool playerExists;
 
 	void Start () 
