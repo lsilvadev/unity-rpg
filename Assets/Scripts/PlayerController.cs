@@ -9,7 +9,12 @@ public class PlayerController : MonoBehaviour {
     public Vector2 lastMove;
     private Animator animator;
     private new Rigidbody2D rigidbody;
+    
     private static bool playerExists;
+
+    private bool attacking;
+    public float attackTime;
+    private float attackTimeCounter;
 
 	void Start () 
     {
@@ -39,32 +44,54 @@ public class PlayerController : MonoBehaviour {
         float vertical = Input.GetAxisRaw("Vertical");
         playerMoving = false;
 
-        if (horizontal > 0.5f || horizontal < -0.5f)
+        if (!attacking)
         {
-            //transform.Translate(new Vector3(horizontal * Time.deltaTime * moveSpeed, 0f, 0f));
-            rigidbody.velocity = new Vector2(horizontal * moveSpeed, rigidbody.velocity.y);
-            playerMoving = true;
-            lastMove = new Vector2(horizontal, 0);
-        }
-        
-        if (vertical > 0.5f || vertical < -0.5f)
-        {
-            //transform.Translate(new Vector3(0f, vertical * Time.deltaTime * moveSpeed, 0f));
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, vertical * moveSpeed);
-            playerMoving = true;
-            lastMove = new Vector2(0, vertical);
+
+            if (horizontal > 0.5f || horizontal < -0.5f)
+            {
+                //transform.Translate(new Vector3(horizontal * Time.deltaTime * moveSpeed, 0f, 0f));
+                rigidbody.velocity = new Vector2(horizontal * moveSpeed, rigidbody.velocity.y);
+                playerMoving = true;
+                lastMove = new Vector2(horizontal, 0);
+            }
+
+            if (vertical > 0.5f || vertical < -0.5f)
+            {
+                //transform.Translate(new Vector3(0f, vertical * Time.deltaTime * moveSpeed, 0f));
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, vertical * moveSpeed);
+                playerMoving = true;
+                lastMove = new Vector2(0, vertical);
+            }
+
+            if (horizontal < 0.5f && horizontal > -0.5f)
+            {
+                rigidbody.velocity = new Vector2(0f, rigidbody.velocity.y);
+            }
+
+            if (vertical < 0.5f && vertical > -0.5f)
+            {
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0f);
+            }
+
+            if (Input.GetKeyDown(KeyCode.J))
+            {
+                attackTimeCounter = attackTime;
+                attacking = true;
+                rigidbody.velocity = Vector2.zero;
+                animator.SetBool("Attack", true);
+            }
         }
 
-        if (horizontal < 0.5f && horizontal > -0.5f)
+        if (attackTimeCounter > 0)
         {
-            rigidbody.velocity = new Vector2(0f, rigidbody.velocity.y);
+            attackTimeCounter -= Time.deltaTime;
         }
-
-        if (vertical < 0.5f && vertical > -0.5f)
+        else
         {
-            rigidbody.velocity = new Vector2(rigidbody.velocity.x, 0f);
+            attacking = false;
+            animator.SetBool("Attack", false);
         }
-        
+                
         animator.SetFloat("MoveY", vertical);
         animator.SetFloat("MoveX", horizontal);
         animator.SetBool("PlayerMoving", playerMoving);
