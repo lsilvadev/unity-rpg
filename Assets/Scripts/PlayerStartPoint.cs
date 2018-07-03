@@ -12,7 +12,7 @@ public class PlayerStartPoint : MonoBehaviour {
 	void Start () {
         player = FindObjectOfType<PlayerController>();
         player.transform.position = transform.position;
-        player.lastMove = startDirection;
+        player.lastPosition = startDirection;
 
         camera = FindObjectOfType<CameraController>();
         camera.transform.position = new Vector3(transform.position.x, transform.position.y, camera.transform.position.z);

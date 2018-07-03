@@ -48,3 +48,6 @@ TagManager:
   - name: Player
     uniqueID: 2727630727
     locked: 0
+  - name: WorldObjects
+    uniqueID: 3869419191
+    locked: 0

@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour {
 
     public float moveSpeed;
     private bool playerMoving;
-    public Vector2 lastMove;
+    public Vector2 lastPosition;
     private Animator animator;
     private new Rigidbody2D rigidbody;
     
@@ -46,21 +46,22 @@ public class PlayerController : MonoBehaviour {
 
         if (!attacking)
         {
-
+            // horizontal movement, left or right
             if (horizontal > 0.5f || horizontal < -0.5f)
             {
                 //transform.Translate(new Vector3(horizontal * Time.deltaTime * moveSpeed, 0f, 0f));
                 rigidbody.velocity = new Vector2(horizontal * moveSpeed, rigidbody.velocity.y);
                 playerMoving = true;
-                lastMove = new Vector2(horizontal, 0);
+                lastPosition = new Vector2(horizontal, 0);
             }
 
+            // vertical movement, up or down
             if (vertical > 0.5f || vertical < -0.5f)
             {
                 //transform.Translate(new Vector3(0f, vertical * Time.deltaTime * moveSpeed, 0f));
                 rigidbody.velocity = new Vector2(rigidbody.velocity.x, vertical * moveSpeed);
                 playerMoving = true;
-                lastMove = new Vector2(0, vertical);
+                lastPosition = new Vector2(0, vertical);
             }
 
             if (horizontal < 0.5f && horizontal > -0.5f)
@@ -95,7 +96,7 @@ public class PlayerController : MonoBehaviour {
         animator.SetFloat("MoveY", vertical);
         animator.SetFloat("MoveX", horizontal);
         animator.SetBool("PlayerMoving", playerMoving);
-        animator.SetFloat("LastMoveX", lastMove.x);
-        animator.SetFloat("LastMoveY", lastMove.y);
+        animator.SetFloat("LastPositionX", lastPosition.x);
+        animator.SetFloat("LastPositionY", lastPosition.y);
     }
 }

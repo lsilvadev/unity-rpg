@@ -26,13 +26,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: LastMoveX
+  - m_Name: LastPositionX
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: LastMoveY
+  - m_Name: LastPositionY
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -96,8 +96,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
-  m_BlendParameter: LastMoveX
-  m_BlendParameterY: LastMoveY
+  m_BlendParameter: LastPositionX
+  m_BlendParameterY: LastPositionY
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
@@ -142,8 +142,8 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: MoveX
     m_Mirror: 0
-  m_BlendParameter: LastMoveX
-  m_BlendParameterY: LastMoveY
+  m_BlendParameter: LastPositionX
+  m_BlendParameterY: LastPositionY
   m_MinThreshold: 0
   m_MaxThreshold: 1
   m_UseAutomaticThresholds: 1
