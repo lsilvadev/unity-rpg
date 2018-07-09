@@ -63,6 +63,7 @@
      <Compile Include="Assets\Scripts\PlayerHealthManager.cs" />
      <Compile Include="Assets\Scripts\PlayerStartPoint.cs" />
      <Compile Include="Assets\Scripts\TransportBehaviour.cs" />
+     <Compile Include="Assets\Scripts\UIManager.cs" />
  <Reference Include="UnityEditor.StandardEvents">
  <HintPath>E:/Meus Documentos/Dev/unity/project/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
