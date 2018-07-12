@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     public float moveSpeed;
+    private float currentMoveSpeed;
+    public float diagonalMoveModifier;
     private bool playerMoving;
     public Vector2 lastPosition;
     private Animator animator;
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour {
             if (horizontal > 0.5f || horizontal < -0.5f)
             {
                 //transform.Translate(new Vector3(horizontal * Time.deltaTime * moveSpeed, 0f, 0f));
-                rigidbody.velocity = new Vector2(horizontal * moveSpeed, rigidbody.velocity.y);
+                rigidbody.velocity = new Vector2(horizontal * currentMoveSpeed, rigidbody.velocity.y);
                 playerMoving = true;
                 lastPosition = new Vector2(horizontal, 0);
             }
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviour {
             if (vertical > 0.5f || vertical < -0.5f)
             {
                 //transform.Translate(new Vector3(0f, vertical * Time.deltaTime * moveSpeed, 0f));
-                rigidbody.velocity = new Vector2(rigidbody.velocity.x, vertical * moveSpeed);
+                rigidbody.velocity = new Vector2(rigidbody.velocity.x, vertical * currentMoveSpeed);
                 playerMoving = true;
                 lastPosition = new Vector2(0, vertical);
             }
@@ -82,6 +84,15 @@ public class PlayerController : MonoBehaviour {
                 attacking = true;
                 rigidbody.velocity = Vector2.zero;
                 animator.SetBool("Attack", true);
+            }
+
+            if (Mathf.Abs(horizontal) > 0.5f && Mathf.Abs(vertical) > 0.5f)
+            {
+                currentMoveSpeed = moveSpeed * diagonalMoveModifier;
+            }
+            else
+            {
+                currentMoveSpeed = moveSpeed;
             }
         }
 
