@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\PlayerHealthManager.cs" />
      <Compile Include="Assets\Scripts\PlayerStartPoint.cs" />
+     <Compile Include="Assets\Scripts\PlayerStats.cs" />
      <Compile Include="Assets\Scripts\TransportBehaviour.cs" />
      <Compile Include="Assets\Scripts\UIManager.cs" />
  <Reference Include="UnityEditor.StandardEvents">
